@@ -10,7 +10,7 @@ document.addEventListener(;DOMContentLoaded', function(){
 	const main = {
 		data(){
 		return {
-			url:"http://affiliate.chychkan.com",
+			url:"https://affiliate.chychkan_practice4.io",
 			user:{name:"", phone"", email:"", date:"", auth:"",
 			formData:{},
 			title:"",
