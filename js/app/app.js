@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	const main = {
 		data(){
 		return {
-			url:"https://affiliate.chychkan.com",
+			url:"https://affiliate.yanbasok.com",
 			user:{name:"", phone:"", email:"", date:"", auth:""},
 			formData:{},
 			title:"",
@@ -37,16 +37,16 @@ document.addEventListener('DOMContentLoaded', function(){
 				if(self.$route['path']=='/' && self.user.type=='admin'){
 					self.page('/campaigns');
 				}else if(['/campaigns','/campaign','/users','/user'].includes(self.$route['path']) && self.user.type!='admin'){	
-					self.page('/statitics');
-				}else if(['/statitics','/payments','/sites'].includes(self.$route['path']) && self.user.type!='admin'){
-					self.page('campaigns');
-				}else if(['campaigns','campaign','/users','user','/statitics','/payments','/sites'].includes(self.$route['path']) && self.user.type!='admin'){
-					self.page('');	
-				}else if(['campaigns','campaign','/users','user','/statitics','/payments','/sites'].includes(self.$route['path']) && self.user.type!='admin'){
-					self.page('');
+					self.page('/statistics');
+				}else if(['/statistics','/payments','/sites'].includes(self.$route['path']) && self.user.type!='admin'){
+					self.page('/campaigns');
+				}else if(['campaigns','campaign','/users','user','/statistics','/payments','/sites'].includes(self.$route['path']) && self.user.type!='admin'){
+					self.page();	
+				}else if(!['campaigns','campaign','/users','user','/statistics','/payments','/sites'].includes(self.$route['path']) && self.user.type!='admin'){
+					self.page();
 				} 
 			}else{
-				self.page('/')
+				self.page('/');
 			}
 		});
 	},
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function(){
 		window.localStorage.setItem('user','');
 	},
 
-	pagefunction (path=""){
+	page:function (path=""){
 		this.$router.replace(path);
 		this.title=this.$route['name'];
 		document.title=this.$route['name'];
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function(){
 }
 };
 
-var app = Vue.CreateApp(main)
+var app = Vue.createApp(main)
 .component('header',header)
 .component('popup',popup)
 .component('search',search)
@@ -92,5 +92,5 @@ var app = Vue.CreateApp(main)
 .component('toogle',toogle)
 .component('Image',img)
 .use(router)
-.mount('content')
+.mount('#content')
 });
